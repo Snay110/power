@@ -1,0 +1,19 @@
+Button{
+    border-radius: 10%;
+    color: rgb(15, 2, 5);
+    margin-right: 10px;
+    font-weight: bold;
+    transition: all 0.3s;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(131, 123, 138);
+    
+}
+Button:hover{
+opacity: 0.8;
+}
+Button:active{
+background-color: rgb(163, 163, 190);
+}
