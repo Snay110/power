@@ -6,28 +6,56 @@ export default function Input() {
     LastName: "",
     email: "",
   });
+  const [hasError, setHasError] = useState({
+    name: false,
+    LastName: false,
+    email: false,
+  });
 
+  function handalChane(event: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    setHasError((prev) => ({
+      ...prev,
+      [name]: value.trim().length === 0,
+    }));
+  }
   return (
     <section>
-      <label htmlFor="">Name</label>
+      <label htmlFor="name">name</label>
       <input
         type={"text"}
+        name="name"
         value={formData.name}
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        style={{
+          border: hasError.name ? "1px solid red" : "",
+        }}
+        onChange={handalChane}
       />
 
       <label htmlFor="">LastName</label>
       <input
         type={"text"}
+        name="LastName"
         value={formData.LastName}
-        onChange={(e) => setFormData({ ...formData, LastName: e.target.value })}
+        style={{
+          border: hasError.LastName ? "1px solid red" : "",
+        }}
+        onChange={handalChane}
       />
 
       <label htmlFor="">email</label>
       <input
         type={"text"}
+        name="email"
         value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        style={{
+          border: hasError.email ? "1px solid red" : "",
+        }}
+        onChange={handalChane}
       />
     </section>
   );
