@@ -1,18 +1,8 @@
 import "./App.css";
-import Button from "./components/Button";
-import WelcomePages from "./pages/WelcomePage";
-import Input from "./components/Input";
-function App() {
-  return (
-    <>
-    <main>
+import AppRouter from "./router";
 
-      <WelcomePages />
-      <Button/>
-      <Input />
-    </main>
-    </>
-  );
+function App() {
+  return <AppRouter />;
 }
 
 export default App;
