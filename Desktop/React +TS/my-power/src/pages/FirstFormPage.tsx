@@ -1,4 +1,3 @@
-import FormPages2 from "./SecondFormPage";
-export default function FormPages1() {
+export default function FirstFormPage() {
   return <h3>Форма 1</h3>;
 }
