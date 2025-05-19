@@ -3,16 +3,16 @@ import { useState } from "react";
 export default function Input() {
   const [formData, setFormData] = useState({
     name: "",
-    LastName: "",
+    lastName: "",
     email: "",
   });
   const [hasError, setHasError] = useState({
     name: false,
-    LastName: false,
+    lastName: false,
     email: false,
   });
 
-  function handalChane(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setFormData((prev) => ({
       ...prev,
@@ -33,18 +33,18 @@ export default function Input() {
         style={{
           border: hasError.name ? "1px solid red" : "",
         }}
-        onChange={handalChane}
+        onChange={handleChange}
       />
 
       <label htmlFor="">LastName</label>
       <input
         type={"text"}
-        name="LastName"
-        value={formData.LastName}
+        name="lastName"
+        value={formData.lastName}
         style={{
-          border: hasError.LastName ? "1px solid red" : "",
+          border: hasError.lastName ? "1px solid red" : "",
         }}
-        onChange={handalChane}
+        onChange={handleChange}
       />
 
       <label htmlFor="">email</label>
@@ -55,7 +55,7 @@ export default function Input() {
         style={{
           border: hasError.email ? "1px solid red" : "",
         }}
-        onChange={handalChane}
+        onChange={handleChange}
       />
     </section>
   );
