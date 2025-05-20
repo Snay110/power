@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../Button/Button";
+import '../Button/Button.css'
+
 export default function Input() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ export default function Input() {
     lastName: "",
     email: "",
   });
+
   const [hasError, setHasError] = useState({
     name: false,
     lastName: false,
@@ -20,18 +22,34 @@ export default function Input() {
       ...prev,
       [name]: value,
     }));
+
     setHasError((prev) => ({
       ...prev,
       [name]: value.trim().length === 0,
     }));
   }
-  const hendleSubmit = () => {
-    if (formData.name.length >= 2 && formData.name.length <= 20) {
+
+ 
+  const handleSubmit = () => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const errors = {
+      name: formData.name.trim().length === 0 || formData.name.length > 20,
+      lastName:
+        formData.lastName.trim().length === 0 ||
+        formData.lastName.length > 20,
+      email: !emailRegex.test(formData.email),
+    };
+
+    setHasError(errors);
+
+    const hasAnyError = Object.values(errors).some((err) => err);
+
+    if (!hasAnyError) {
       navigate("/first-form-page");
-    } else {
-      alert("Имя должно быть от 2 до 20 символов");
     }
   };
+
+  
   return (
     <section>
       <label htmlFor="name">name</label>
@@ -43,7 +61,6 @@ export default function Input() {
           border: hasError.name ? "1px solid red" : "",
         }}
         onChange={handleChange}
-        
       />
 
       <label htmlFor="">LastName</label>
@@ -67,6 +84,8 @@ export default function Input() {
         }}
         onChange={handleChange}
       />
+<button className="Button" onClick={handleSubmit}>Submit</button>
     </section>
   );
 }
+

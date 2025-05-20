@@ -1,3 +1,20 @@
+import Button from "../Button/Button";
+
 export default function FirstFormPage() {
-  return <h3>Форма 1</h3>;
+  return (
+    <main>
+      <section>
+        <form>
+          <label htmlFor="">Задача</label>
+          <input type="text" />
+          <select name="" id="">
+          <option value="">Бег по утрам</option>
+          <option value="">Бег по утрам</option>
+          <option value="">Бег по утрам</option>
+          </select> 
+        </form>
+        <Button />
+      </section>
+    </main>
+  );
 }
