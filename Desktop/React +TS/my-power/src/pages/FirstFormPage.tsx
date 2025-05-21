@@ -1,4 +1,5 @@
 import Button from "../Button/Button";
+import { Weys } from "../components/list";
 
 export default function FirstFormPage() {
   return (
@@ -7,11 +8,6 @@ export default function FirstFormPage() {
         <form>
           <label htmlFor="">Задача</label>
           <input type="text" />
-          <select name="" id="">
-          <option value="">Бег по утрам</option>
-          <option value="">Бег по утрам</option>
-          <option value="">Бег по утрам</option>
-          </select> 
         </form>
         <Button />
       </section>
