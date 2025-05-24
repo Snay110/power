@@ -1,4 +1,4 @@
-export  const Weys = [
+export  const Ways = [
     {id: '0', label: 'чтение', emoji: '📚'},
     {id: '1', label: 'спорт', emoji:'🤸' },
     {id: '2', label: 'йога', emoji:'🧘' },

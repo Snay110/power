@@ -1,15 +1,14 @@
-import Button from "../Button/Button";
-import { Weys } from "../components/list";
+
+import EffectHandle from "../components/fristInput";
 
 export default function FirstFormPage() {
   return (
     <main>
       <section>
         <form>
-          <label htmlFor="">Задача</label>
-          <input type="text" />
+         <EffectHandle/>
+       
         </form>
-        <Button />
       </section>
     </main>
   );
