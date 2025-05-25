@@ -26,8 +26,10 @@ export default function EffectHandle() {
     }
   });
 
-  const listitems = Ways.map((person) => <li key={person.id}>...Ways</li>);
-
+  const listItems = Ways.map((person) => <li key={person.id}>{person.label}</li>);
+  const userHabits = habits.map((habit, index) => (
+    <li key={`${index}`}>{habit}</li>
+  ));
   return (
     <section>
       <label htmlFor="habit" id="habit">
@@ -41,6 +43,10 @@ export default function EffectHandle() {
           setHabitInput(e.target.value)
         }
       />
+      <ul>
+        {listItems}
+        {userHabits}
+      </ul>
       <button className="Button" onClick={handleClick}>
         f
       </button>
