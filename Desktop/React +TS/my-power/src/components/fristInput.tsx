@@ -1,55 +1,47 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import { Ways } from "../data";
 
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
-  const [habits, setHabits] = useState([]);
+  const [habits, setHabits] = useStatecd([]);
 
-  function handleClick() {
-    setHabits((prev) => [...prev]);
-    setHabitInput("");
+  function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
     if (habitInput.trim() === "") {
-      return new Error("Поле пустое");
+      console.log("Field is empty");
+      return;
     }
+    setHabits((prev) => [...prev, habitInput]);
+    setHabitInput("");
   }
 
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("habits");
-      if (saved !== null) {
-        const parsed = JSON.parse(saved);
-        setHabits(parsed);
-      }
-    } catch (e) {
-      console.log("localStorage error", e);
-    }
-  });
-
-  const listItems = Ways.map((person) => <li key={person.id}>{person.label}</li>);
-  const userHabits = habits.map((habit, index) => (
-    <li key={`${index}`}>{habit}</li>
+  const listItems = Ways.map((person) => (
+    <li key={person.id}>
+      {person.label} {person.emoji}
+    </li>
   ));
+
+  const userHabits = habits.map((habit, index) => (
+    <li key={index}>{habit} </li>
+  ));
+
   return (
     <section>
-      <label htmlFor="habit" id="habit">
-        Choose/create a habit:
-      </label>
-      <input
-        type="text"
-        className="input "
-        value={habitInput}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setHabitInput(e.target.value)
-        }
-      />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="input "
+          value={habitInput}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setHabitInput(e.target.value)
+          }
+        />
+        <button className="Button"> to add</button>
+      </form>
       <ul>
         {listItems}
         {userHabits}
       </ul>
-      <button className="Button" onClick={handleClick}>
-        f
-      </button>
     </section>
   );
 }
