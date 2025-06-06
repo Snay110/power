@@ -3,7 +3,7 @@ import { Ways } from "../data";
 
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
-  const [habits, setHabits] = useStatecd([]);
+  const [habits, setHabits] = useState([]);
 
   function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -27,6 +27,7 @@ export default function EffectHandle() {
 
   return (
     <section>
+      <h3>add a habit</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -37,6 +38,7 @@ export default function EffectHandle() {
           }
         />
         <button className="Button"> to add</button>
+      
       </form>
       <ul>
         {listItems}
