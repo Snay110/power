@@ -3,7 +3,7 @@ import { Ways } from "../data";
 
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
-  const [habits, setHabits] = useState([]);
+  const [habits, setHabits] = useState<string[]>([]);
   const [ways, setWays] = useState(Ways)
 
   function handleSubmit(e:  React.FormEvent<HTMLFormElement>) {
