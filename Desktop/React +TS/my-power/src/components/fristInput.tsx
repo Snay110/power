@@ -15,6 +15,13 @@ export default function EffectHandle() {
     setHabitInput("");
   }
 
+  
+  
+  function handleDelete (indexToDelete:number){
+    setHabits((prev) => prev.filter((_,i)=> i !== indexToDelete))
+  }
+  
+  
   const listItems = Ways.map((person) => (
     <li key={person.id}>
       {person.label} {person.emoji}
@@ -22,7 +29,9 @@ export default function EffectHandle() {
   ));
 
   const userHabits = habits.map((habit, index) => (
-    <li key={index}>{habit} </li>
+    <li key={index}>{habit}
+  <button onClick={()=> handleDelete(index)}>🗑️</button>
+   </li>
   ));
 
   return (
