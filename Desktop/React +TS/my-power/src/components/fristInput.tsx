@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Ways } from "../data";
 
+
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
   const [habits, setHabits] = useState<string[]>([]);
-  const [ways, setWays] = useState(Ways)
+  const [ways, setWays] = useState(Ways);
 
-  function handleSubmit(e:  React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (habitInput.trim() === "") {
       console.log("Field is empty");
@@ -16,27 +17,31 @@ export default function EffectHandle() {
     setHabitInput("");
   }
 
-  
-  
-  function handleDelete (indexToDelete:number){
-    setHabits((prev) => prev.filter((_,i)=> i !== indexToDelete))
+  function handleDelete(indexToDelete: number) {
+    setHabits((prev) => prev.filter((_, i) => i !== indexToDelete));
   }
-  
-  function handleDeleteWays(idToDelete:string){
-setWays((prev) => prev.filter(way => way.id !== idToDelete))
+
+  function handleDeleteWays(idToDelete: string) {
+    setWays((prev) => prev.filter((way) => way.id !== idToDelete));
   }
-  
+
   const listItems = ways.map((person) => (
-    <li key={person.id}>
+    <li 
+    className="habit-item" key={person.id}>
       {person.label} {person.emoji}
-      <button onClick={()=> handleDeleteWays(person.id)}>🗑️</button>
+      <button className="delete-button" onClick={() => handleDeleteWays(person.id)}>
+        🗑️
+      </button>
     </li>
   ));
 
   const userHabits = habits.map((habit, index) => (
-    <li key={index}>{habit}
-  <button onClick={()=> handleDelete(index)}>🗑️</button>
-   </li>
+    <li className="habit-item" key={index}>
+      {habit}
+      <button className="delete-button" onClick={() => handleDelete(index)}>
+        🗑️
+      </button>
+    </li>
   ));
 
   return (
@@ -52,7 +57,6 @@ setWays((prev) => prev.filter(way => way.id !== idToDelete))
           }
         />
         <button className="Button"> to add</button>
-      
       </form>
       <ul>
         {listItems}

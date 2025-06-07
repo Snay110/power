@@ -1,10 +1,10 @@
 * {
-  margin: auto;
+  margin: 0;
   padding: auto;
   box-sizing: border-box;
 }
 body {
-  font-family: "Roboto", sans-serif;
+  background-color: #e6e7e9;
 }
 
 section {
@@ -41,40 +41,48 @@ input:focus {
 
 ul {
   margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: #ffffff;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0;
   list-style: none;
 }
 
-li {
-  padding: 0.5rem 1rem;
-  margin-bottom: 0.5rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 0.5rem;
-  background-color: #f9f9f9;
-  color: #333;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
-}
-
-li:hover {
-  background-color: #f0f0f0;
-}
-button {
-  background-color: #4f46e5;
-  color: white;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
+.habit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  transition: background 0.2s;
+  background: #d1d5e0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.habit-item:hover{
+  background: #8279af;
+  color: #fff;
+  transform: scale(1.06)
 }
 
-button:hover {
-  background-color: #3730a3;
+
+
+.habit-delete {
+  min-width: 32px;
+  min-height: 32px;
+  max-width: 32px;
+  max-height: 32px;
+  background: #c1c7d6;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0; 
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.habit-delete:hover {
+  background: #d9534f;
+  color: #fff;
+  transform: scale(1.1);
 }
