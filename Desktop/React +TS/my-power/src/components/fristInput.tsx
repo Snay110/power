@@ -4,6 +4,7 @@ import { Ways } from "../data";
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
   const [habits, setHabits] = useState([]);
+  const [ways, setWays] = useState(Ways)
 
   function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -21,10 +22,14 @@ export default function EffectHandle() {
     setHabits((prev) => prev.filter((_,i)=> i !== indexToDelete))
   }
   
+  function handleDeleteWays(idToDelete:string){
+setWays((prev) => prev.filter(way => way.id !== idToDelete))
+  }
   
-  const listItems = Ways.map((person) => (
+  const listItems = ways.map((person) => (
     <li key={person.id}>
       {person.label} {person.emoji}
+      <button onClick={()=> handleDeleteWays(person.id)}>🗑️</button>
     </li>
   ));
 
