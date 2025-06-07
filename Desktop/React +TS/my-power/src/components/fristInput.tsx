@@ -6,7 +6,7 @@ export default function EffectHandle() {
   const [habits, setHabits] = useState([]);
   const [ways, setWays] = useState(Ways)
 
-  function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
+  function handleSubmit(e:  React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (habitInput.trim() === "") {
       console.log("Field is empty");
