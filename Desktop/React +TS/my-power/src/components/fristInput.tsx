@@ -8,14 +8,14 @@ export default function EffectHandle() {
   const [habits, setHabits] = useState<{id: string, label:string}[]>([]);
   const [ways, setWays] = useState(Ways);
 
-  
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (habitInput.trim() === "") {
   toast.error('The field cannot be empty') 
   return;
     }
+
     try{
       setHabits(prev => [...prev,{id: crypto.randomUUID(),label: habitInput}]);
       setHabitInput("");
