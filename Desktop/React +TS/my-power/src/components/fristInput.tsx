@@ -1,44 +1,52 @@
 import { useState } from "react";
+import  { toast  } from 'react-toastify'
 import { Ways } from "../data";
 
 
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
-  const [habits, setHabits] = useState<string[]>([]);
+  const [habits, setHabits] = useState<{id: string, label:string}[]>([]);
   const [ways, setWays] = useState(Ways);
+
+  
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (habitInput.trim() === "") {
-      console.log("Field is empty");
-      return;
+  toast.error('The field cannot be empty') 
+  return;
     }
-    setHabits((prev) => [...prev, habitInput]);
-    setHabitInput("");
+    try{
+      setHabits(prev => [...prev,{id: crypto.randomUUID(),label: habitInput}]);
+      setHabitInput("");
+toast.success('Habit successfully added')
+    }catch{
+toast.error('error adding habit.')
+    }
   }
 
-  function handleDelete(indexToDelete: number) {
-    setHabits((prev) => prev.filter((_, i) => i !== indexToDelete));
+  function handleDelete(id: string) {
+    setHabits((prev) => prev.filter(habit => habit.id  !== id));
   }
 
-  function handleDeleteWays(idToDelete: string) {
-    setWays((prev) => prev.filter((way) => way.id !== idToDelete));
+  function onDelete(id: string) {
+    setWays((prev) => prev.filter((way) => way.id !== id));
   }
 
   const listItems = ways.map((person) => (
     <li 
     className="habit-item" key={person.id}>
       {person.label} {person.emoji}
-      <button className="delete-button" onClick={() => handleDeleteWays(person.id)}>
+      <button className="delete-button" onClick={() => onDelete(person.id)}>
         🗑️
       </button>
     </li>
   ));
 
-  const userHabits = habits.map((habit, index) => (
-    <li className="habit-item" key={index}>
-      {habit}
-      <button className="delete-button" onClick={() => handleDelete(index)}>
+  const userHabits = habits.map((habit) => (
+    <li className="habit-item" key={habit.id}>
+      {habit.label}
+      <button className="delete-button" onClick={() => handleDelete(habit.id)}>
         🗑️
       </button>
     </li>
@@ -56,7 +64,7 @@ export default function EffectHandle() {
             setHabitInput(e.target.value)
           }
         />
-        <button className="Button"> to add</button>
+          <button className="Button" > to add</button>
       </form>
       <ul>
         {listItems}

@@ -1,6 +1,6 @@
  Button{
     border-radius: 10%;
-    color: rgb(15, 2, 5);
+    color: rgb(248, 244, 245);
     margin-right: 10px;
     font-weight: bold;
     transition: all 0.3s;
@@ -8,7 +8,7 @@
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    background-color: rgb(131, 123, 138);
+    background-color: rgb(17, 17, 17);
     
 }
 Button:hover{
