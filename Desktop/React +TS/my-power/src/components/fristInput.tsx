@@ -1,33 +1,35 @@
 import { useState } from "react";
-import  { toast  } from 'react-toastify'
+import { toast } from "react-toastify";
 import { Ways } from "../data";
-import '../Button/Button.css'
-
+import "../Button/Button.css";
+import HabitForm from "./HabitForm";
 
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
-  const [habits, setHabits] = useState<{id: string, label:string}[]>([]);
+  const [habits, setHabits] = useState<{ id: string; label: string }[]>([]);
   const [ways, setWays] = useState(Ways);
 
-
-function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (habitInput.trim() === "") {
-  toast.error('The field cannot be empty') 
-  return;
+      toast.error("The field cannot be empty");
+      return;
     }
 
-    try{
-      setHabits(prev => [...prev,{id: crypto.randomUUID(),label: habitInput}]);
+    try {
+      setHabits((prev) => [
+        ...prev,
+        { id: crypto.randomUUID(), label: habitInput },
+      ]);
       setHabitInput("");
-toast.success('Habit successfully added')
-    }catch{
-toast.error('error adding habit.')
+      toast.success("Habit successfully added");
+    } catch {
+      toast.error("error adding habit.");
     }
   }
 
   function handleDelete(id: string) {
-    setHabits((prev) => prev.filter(habit => habit.id  !== id));
+    setHabits((prev) => prev.filter((habit) => habit.id !== id));
   }
 
   function onDelete(id: string) {
@@ -35,8 +37,7 @@ toast.error('error adding habit.')
   }
 
   const listItems = ways.map((person) => (
-    <li 
-    className="habit-item" key={person.id}>
+    <li className="habit-item" key={person.id}>
       {person.label} {person.emoji}
       <button className="Button" onClick={() => onDelete(person.id)}>
         🗑️
@@ -55,18 +56,14 @@ toast.error('error adding habit.')
 
   return (
     <section>
-      <h3>Add a habit</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="input "
-          value={habitInput}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setHabitInput(e.target.value)
-          }
-        />
-          <button className="Button" > To add</button>
-      </form>
+      <HabitForm
+      
+        habitInput={habitInput}
+        setHabitInput={setHabitInput}
+        setHabits={setHabits}
+       
+        handleSubmit={handleSubmit}
+      />
       <ul>
         {listItems}
         {userHabits}
