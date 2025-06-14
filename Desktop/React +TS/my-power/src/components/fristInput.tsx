@@ -1,32 +1,13 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { Ways } from "../data";
 import "../Button/Button.css";
+import { handleSubmit } from "./HandleSubmit";
 import HabitForm from "./HabitForm";
 
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
   const [habits, setHabits] = useState<{ id: string; label: string }[]>([]);
   const [ways, setWays] = useState(Ways);
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (habitInput.trim() === "") {
-      toast.error("The field cannot be empty");
-      return;
-    }
-
-    try {
-      setHabits((prev) => [
-        ...prev,
-        { id: crypto.randomUUID(), label: habitInput },
-      ]);
-      setHabitInput("");
-      toast.success("Habit successfully added");
-    } catch {
-      toast.error("error adding habit.");
-    }
-  }
 
   function handleDelete(id: string) {
     setHabits((prev) => prev.filter((habit) => habit.id !== id));
@@ -57,12 +38,10 @@ export default function EffectHandle() {
   return (
     <section>
       <HabitForm
-      
         habitInput={habitInput}
         setHabitInput={setHabitInput}
         setHabits={setHabits}
-       
-        handleSubmit={handleSubmit}
+        handleSubmit={(e) => handleSubmit(e,habitInput,setHabitInput,setHabits)}
       />
       <ul>
         {listItems}

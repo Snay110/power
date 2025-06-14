@@ -3,10 +3,11 @@ import * as React from "react";
 type HabitFormProps = {
   habitInput: string;
   setHabitInput: React.Dispatch<React.SetStateAction<string>>;
-  setHabits: React.Dispatch<React.SetStateAction< {id: string; label: string}[]>>;
+  setHabits: React.Dispatch<
+    React.SetStateAction<{ id: string; label: string }[]>
+  >;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
-
 
 export default function HabitForm({
   habitInput,
@@ -21,7 +22,7 @@ export default function HabitForm({
         value={habitInput}
         onChange={(e) => setHabitInput(e.target.value)}
       />
-      <button  className="Button">To add</button>
+      <button className="Button">To add</button>
     </form>
   );
 }

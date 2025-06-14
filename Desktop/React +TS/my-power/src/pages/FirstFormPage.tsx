@@ -1,6 +1,6 @@
 import EffectHandle from "../components/fristInput";
 import  {  ToastContainer  } from 'react-toastify'
-import { Header } from "../components/Header";
+import { Header } from "../components/header";
 export default function FirstFormPage() {
   return (
     <main>
