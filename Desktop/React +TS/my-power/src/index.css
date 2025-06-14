@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #e6e7e9;
+ background-color: #f9fafb;
 }
 
 section {
@@ -91,6 +91,7 @@ ul {
 .span{
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #333333;
   color: #fff;
   border-radius: 10px;

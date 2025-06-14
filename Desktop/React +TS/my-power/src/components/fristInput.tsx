@@ -1,6 +1,7 @@
 import { useState } from "react";
 import  { toast  } from 'react-toastify'
 import { Ways } from "../data";
+import '../Button/Button.css'
 
 
 export default function EffectHandle() {
@@ -37,7 +38,7 @@ toast.error('error adding habit.')
     <li 
     className="habit-item" key={person.id}>
       {person.label} {person.emoji}
-      <button className="delete-button" onClick={() => onDelete(person.id)}>
+      <button className="Button" onClick={() => onDelete(person.id)}>
         🗑️
       </button>
     </li>
@@ -46,7 +47,7 @@ toast.error('error adding habit.')
   const userHabits = habits.map((habit) => (
     <li className="habit-item" key={habit.id}>
       {habit.label}
-      <button className="delete-button" onClick={() => handleDelete(habit.id)}>
+      <button className="Button" onClick={() => handleDelete(habit.id)}>
         🗑️
       </button>
     </li>
@@ -54,7 +55,7 @@ toast.error('error adding habit.')
 
   return (
     <section>
-      <h3>add a habit</h3>
+      <h3>Add a habit</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -64,7 +65,7 @@ toast.error('error adding habit.')
             setHabitInput(e.target.value)
           }
         />
-          <button className="Button" > to add</button>
+          <button className="Button" > To add</button>
       </form>
       <ul>
         {listItems}

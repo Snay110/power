@@ -1,3 +1,4 @@
+import '../Button/Button.css'
 import { useEffect, useState } from "react";
 export function Header() {
   const [now, setNow] = useState(new Date());
@@ -10,7 +11,8 @@ export function Header() {
 
   return (
     <header>
-      <span className="span">Время сейчас:{now.toLocaleTimeString()}</span>
+    
+      <span  className="span">The time is now:{now.toLocaleTimeString()} {<button className="ButtonHeader">⚙️</button>}</span> 
     </header>
   );
 }
