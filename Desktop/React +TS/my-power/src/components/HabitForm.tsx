@@ -1,13 +1,4 @@
-import * as React from "react";
-
-type HabitFormProps = {
-  habitInput: string;
-  setHabitInput: React.Dispatch<React.SetStateAction<string>>;
-  setHabits: React.Dispatch<
-    React.SetStateAction<{ id: string; label: string }[]>
-  >;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-};
+import type{ HabitFormProps } from "./types";
 
 export default function HabitForm({
   habitInput,

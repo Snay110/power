@@ -1,13 +1,11 @@
 import { toast } from "react-toastify";
-
-export function handleSubmit(
-  e: React.FormEvent<HTMLFormElement>,
-  habitInput: string,
-  setHabitInput: React.Dispatch<React.SetStateAction<string>>,
-  setHabits: React.Dispatch<
-    React.SetStateAction<{ id: string; label: string }[]>
-  >
-) {
+import type{ HandleSubmitParams } from "./types";
+export function handleSubmit({
+  e,
+  setHabitInput,
+  habitInput,
+   setHabits,
+}:HandleSubmitParams) {
   e.preventDefault();
   if (habitInput.trim() === "") {
     toast.error("The field cannot be empty");
