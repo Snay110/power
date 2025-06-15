@@ -1,48 +1,34 @@
 import { useState } from "react";
 import { Ways } from "../data";
-
+import "../Button/Button.css";
+import { handleSubmit } from "./handleSubmit";
+import HabitForm from "./habitForm";
+import { ListItems } from "./listItems";
+import { UserHabits } from "./userHabits";
+import { handleDelete } from "./handleDelete";
+import { onDelete } from "./onDelete";
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
-  const [habits, setHabits] = useState([]);
-
-  function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    if (habitInput.trim() === "") {
-      console.log("Field is empty");
-      return;
-    }
-    setHabits((prev) => [...prev, habitInput]);
-    setHabitInput("");
-  }
-
-  const listItems = Ways.map((person) => (
-    <li key={person.id}>
-      {person.label} {person.emoji}
-    </li>
-  ));
-
-  const userHabits = habits.map((habit, index) => (
-    <li key={index}>{habit} </li>
-  ));
+  const [habits, setHabits] = useState<{ id: string; label: string }[]>([]);
+  const [ways, setWays] = useState(Ways);
 
   return (
     <section>
-      <h3>add a habit</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="input "
-          value={habitInput}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setHabitInput(e.target.value)
-          }
-        />
-        <button className="Button"> to add</button>
-      
-      </form>
+      <HabitForm
+        habitInput={habitInput}
+        setHabitInput={setHabitInput}
+        setHabits={setHabits}
+        handleSubmit={(e) =>
+          handleSubmit({ e, habitInput, setHabitInput, setHabits })
+        }
+      />
       <ul>
-        {listItems}
-        {userHabits}
+        <ListItems ways={ways} onDelete={onDelete} setWays={setWays} />
+        <UserHabits
+          habits={habits}
+          handleDelete={handleDelete}
+          setHabits={setHabits}
+        />
       </ul>
     </section>
   );

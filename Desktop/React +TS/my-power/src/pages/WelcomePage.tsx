@@ -1,4 +1,4 @@
-import Input from "../components/Input";
+import Input from "../auth/Input";
 export default function WelcomePages() {
   return (
     <main>
