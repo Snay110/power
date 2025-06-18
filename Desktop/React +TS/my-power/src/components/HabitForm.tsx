@@ -4,7 +4,10 @@ export default function HabitForm({
   habitInput,
   setHabitInput,
   handleSubmit,
-}: HabitFormProps) {
+}: HabitFormProps){
+
+
+
   return (
     <form onSubmit={handleSubmit}>
       <input

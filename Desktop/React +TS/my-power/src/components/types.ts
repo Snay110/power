@@ -51,10 +51,10 @@ export type AuthData = {
   lastName: string;
   email: string;
 };
-export type AuthFromProps= {
+export type AuthFromProps = {
   formData: AuthData;
   setHasError: React.Dispatch<React.SetStateAction<FormErrors>>;
-  navigate: ReturnType<typeof useNavigate>
+  navigate: ReturnType<typeof useNavigate>;
 };
 
 export type FormErrors = {
@@ -66,4 +66,12 @@ export type HandleChangeProps = {
   event: React.ChangeEvent<HTMLInputElement>;
   setFormData: React.Dispatch<React.SetStateAction<AuthData>>;
   setHasError: React.Dispatch<React.SetStateAction<FormErrors>>;
+};
+
+export type Async = {
+  setHabits: React.Dispatch<
+    React.SetStateAction<{ id: string; label: string }[]>
+  >;
+  habitInput: string;
+  setHabitInput: React.Dispatch<React.SetStateAction<string>>;
 };
