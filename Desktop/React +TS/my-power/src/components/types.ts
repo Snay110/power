@@ -33,17 +33,14 @@ export type ListItemsProps = {
   setWays: React.Dispatch<React.SetStateAction<WayItem[]>>;
   onDelete: (params: DeleteParams) => void;
 };
-export type UserHabitsProps = {
+
+ export type UserHabitsProps = {
   habits: { id: string; label: string }[];
-  handleDelete: (
-    id: string,
-    setHabits: React.Dispatch<
-      React.SetStateAction<{ id: string; label: string }[]>
-    >
-  ) => void;
-  setHabits: React.Dispatch<
-    React.SetStateAction<{ id: string; label: string }[]>
-  >;
+  handleDelete: (id: string, setHabits: React.Dispatch<React.SetStateAction<{ id: string; label: string }[]>>) => void;
+  setHabits: React.Dispatch<React.SetStateAction<{ id: string; label: string }[]>>;
+  toggleHabitStatus: (id: string) => void;
+  completedHabits: string[];
+
 };
 
 export type AuthData = {

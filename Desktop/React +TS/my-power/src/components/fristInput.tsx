@@ -6,7 +6,8 @@ import { ListItems } from "./listItems";
 import { UserHabits } from "./userHabits";
 import { handleDelete } from "./handleDelete";
 import { onDelete } from "./onDelete";
-import { useAddHabit } from "./habitsAsync";
+import { useAddHabit } from "./useAddHabit";
+import { useHabitStatus } from "./useHabitStatus";
 
 export default function EffectHandle() {
   const [habitInput, setHabitInput] = useState("");
@@ -14,12 +15,12 @@ export default function EffectHandle() {
   const [ways, setWays] = useState(Ways);
 
   const { addHabit } = useAddHabit({ habitInput, setHabitInput, setHabits });
-
+  const { completedHabits, toggleHabitStatus} = useHabitStatus();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (habitInput.trim() === "") return;
 
-    await addHabit(habitInput); 
+    await addHabit(habitInput);
   };
 
   useEffect(() => {
@@ -44,6 +45,8 @@ export default function EffectHandle() {
           habits={habits}
           handleDelete={handleDelete}
           setHabits={setHabits}
+          toggleHabitStatus={toggleHabitStatus}
+          completedHabits={completedHabits}
         />
       </ul>
     </section>
