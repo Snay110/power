@@ -13,8 +13,8 @@ export function UserHabits({
         <li
           className={`habit-item ${
             completedHabits.includes(habit.id) ? "completed" : ""
-          }}
-          key={habit.id`}
+          }`}
+          key={habit.id}
         >
           {habit.label}
           <button className="Button" onClick={() => toggleHabitStatus(habit.id)}>
