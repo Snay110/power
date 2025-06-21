@@ -1,7 +1,7 @@
 export  const Ways = [
-    {id: '0', label: 'reading', emoji: '📚'},
-    {id: '1', label: 'sports', emoji:'🤸' },
-    {id: '2', label: 'yoga', emoji:'🧘' },
-    {id: '3', label: 'development', emoji:'🚀' },
-    {id: '4', label: 'swimming', emoji:'🏊' },
+    {id: '0', label: 'reading'},
+    {id: '1', label: 'sports' },
+    {id: '2', label: 'yoga' },
+    {id: '3', label: 'development' },
+    {id: '4', label: 'swimming'},
 ]

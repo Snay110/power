@@ -20,7 +20,7 @@ export type HandleSubmitParams = {
 export type WayItem = {
   id: string;
   label: string;
-  emoji: string;
+   status: 'done' |'failed'
 };
 
 export type DeleteParams = {
@@ -34,13 +34,20 @@ export type ListItemsProps = {
   onDelete: (params: DeleteParams) => void;
 };
 
- export type UserHabitsProps = {
-  habits: { id: string; label: string }[];
-  handleDelete: (id: string, setHabits: React.Dispatch<React.SetStateAction<{ id: string; label: string }[]>>) => void;
-  setHabits: React.Dispatch<React.SetStateAction<{ id: string; label: string }[]>>;
+export type UserHabitsProps = {
+  habits: Habit[];
+  handleDelete: (
+    id: string,
+    setHabits: React.Dispatch<
+      React.SetStateAction<{ id: string; label: string }[]>
+    >
+  ) => void;
+  setHabits: React.Dispatch<
+    React.SetStateAction<{ id: string; label: string }[]>
+  >;
   toggleHabitStatus: (id: string) => void;
   completedHabits: string[];
-
+  status: 'done' |'failed'
 };
 
 export type AuthData = {
@@ -57,7 +64,6 @@ export type AuthFromProps = {
 export type FormErrors = {
   name: boolean;
   lastName: boolean;
-  email: boolean;
 };
 export type HandleChangeProps = {
   event: React.ChangeEvent<HTMLInputElement>;
@@ -71,4 +77,10 @@ export type Async = {
   >;
   habitInput: string;
   setHabitInput: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export type Habit = {
+  id: string;
+  label: string;
+    status?: 'done' |'failed' |null
 };

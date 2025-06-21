@@ -54,13 +54,25 @@ ul {
   background: #d1d5e0;
   padding: 10px 12px;
   border-radius: 8px;
+  border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+ transition: all 0.4 ease;
 }
 .habit-item:hover{
   background: #5a5a5c;
   color: #fff;
   transform: scale(1.04)
+}
+.habit-item--done{
+  background-color: #e6f9ea;
+  border-color: #4caf50;
+  box-shadow: inset 0 0 8px rgba(76,175,80, 0.4);
+}
+.habit-item--failed{
+  background-color: #fde8e8;
+  border-color: #f44336;
+  box-shadow: inset 0 0 8px rgba(244,67,54, 0.4 );
 }
 
 

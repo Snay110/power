@@ -2,17 +2,16 @@ import { useState, useEffect } from "react";
 import { Ways } from "../data";
 import "../Button/Button.css";
 import HabitForm from "./habitForm";
-import { ListItems } from "./listItems";
 import { UserHabits } from "./userHabits";
 import { handleDelete } from "./handleDelete";
-import { onDelete } from "./onDelete";
 import { useAddHabit } from "./useAddHabit";
 import { useHabitStatus } from "./useHabitStatus";
+import type { Habit } from "./types";
 
 export default function EffectHandle() {
+
   const [habitInput, setHabitInput] = useState("");
-  const [habits, setHabits] = useState<{ id: string; label: string }[]>([]);
-  const [ways, setWays] = useState(Ways);
+  const [habits, setHabits] = useState<Habit[]>(Ways);
 
   const { addHabit } = useAddHabit({ habitInput, setHabitInput, setHabits });
   const { completedHabits, toggleHabitStatus} = useHabitStatus();
@@ -28,6 +27,9 @@ export default function EffectHandle() {
     if (habitStore) {
       const parse = JSON.parse(habitStore);
       setHabits(parse);
+      localStorage.setItem('habits', JSON.stringify(Ways))
+      setHabits(Ways)
+     
     }
   }, []);
 
@@ -40,7 +42,6 @@ export default function EffectHandle() {
         handleSubmit={handleSubmit}
       />
       <ul>
-        <ListItems ways={ways} onDelete={onDelete} setWays={setWays} />
         <UserHabits
           habits={habits}
           handleDelete={handleDelete}

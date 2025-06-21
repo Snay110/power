@@ -12,13 +12,20 @@ export function UserHabits({
       {habits.map((habit) => (
         <li
           className={`habit-item ${
-            completedHabits.includes(habit.id) ? "completed" : ""
+            completedHabits.includes(habit.id)
+    ? "habit-item--done"
+    : habit.status === "failed"
+    ? "habit-item--failed"
+    : ""
           }`}
           key={habit.id}
         >
           {habit.label}
-          <button className="Button" onClick={() => toggleHabitStatus(habit.id)}>
+          <button className="habit-check" onClick={() => toggleHabitStatus(habit.id)}>
             ✅
+          </button>
+          <button className="habit-uncheck" onClick={() => toggleHabitStatus(habit.id)}>
+            ❌
           </button>
           <button
             className="Button"
