@@ -33,7 +33,7 @@ export default function Input() {
         onChange={(event) => handleChange({ event, setFormData, setHasError })}
       />
 
-      <label htmlFor="">LastName</label>
+      <label htmlFor="last-name">LastName</label>
       <input
         type={"text"}
         name="lastName"
@@ -44,7 +44,7 @@ export default function Input() {
         onChange={(event) => handleChange({ event, setFormData, setHasError })}
       />
 
-      <label htmlFor="">email</label>
+      <label htmlFor="email">email</label>
       <input
         type={"text"}
         name="email"

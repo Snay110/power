@@ -4,7 +4,7 @@ export   function handleChange({event,setFormData,setHasError}:HandleChangeProps
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }));
+    }));                                  
 
     setHasError((prev) => ({
       ...prev,

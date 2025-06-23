@@ -20,7 +20,7 @@ export type HandleSubmitParams = {
 export type WayItem = {
   id: string;
   label: string;
-  emoji: string;
+   status: 'done' |'failed'
 };
 
 export type DeleteParams = {
@@ -33,8 +33,9 @@ export type ListItemsProps = {
   setWays: React.Dispatch<React.SetStateAction<WayItem[]>>;
   onDelete: (params: DeleteParams) => void;
 };
+
 export type UserHabitsProps = {
-  habits: { id: string; label: string }[];
+  habits: Habit[];
   handleDelete: (
     id: string,
     setHabits: React.Dispatch<
@@ -44,6 +45,9 @@ export type UserHabitsProps = {
   setHabits: React.Dispatch<
     React.SetStateAction<{ id: string; label: string }[]>
   >;
+  toggleHabitStatus: (id: string) => void;
+  completedHabits: string[];
+  status: 'done' |'failed'
 };
 
 export type AuthData = {
@@ -51,19 +55,32 @@ export type AuthData = {
   lastName: string;
   email: string;
 };
-export type AuthFromProps= {
+export type AuthFromProps = {
   formData: AuthData;
   setHasError: React.Dispatch<React.SetStateAction<FormErrors>>;
-  navigate: ReturnType<typeof useNavigate>
+  navigate: ReturnType<typeof useNavigate>;
 };
 
 export type FormErrors = {
   name: boolean;
   lastName: boolean;
-  email: boolean;
 };
 export type HandleChangeProps = {
   event: React.ChangeEvent<HTMLInputElement>;
   setFormData: React.Dispatch<React.SetStateAction<AuthData>>;
   setHasError: React.Dispatch<React.SetStateAction<FormErrors>>;
+};
+
+export type Async = {
+  setHabits: React.Dispatch<
+    React.SetStateAction<{ id: string; label: string }[]>
+  >;
+  habitInput: string;
+  setHabitInput: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export type Habit = {
+  id: string;
+  label: string;
+    status?: 'done' |'failed' |null
 };
